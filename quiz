@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://via.placeholder.com/1920x1080.png?text=Business+Background') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        .question {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .options {
+            margin-top: 10px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .back-btn {
+            background-color: #ccc;
+            color: #333;
+        }
+        .next-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .submit-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="team-code-page">
+        <h2 class="title">Enter Team Code</h2>
+        <input type="text" id="team-code" placeholder="Enter your team code">
+        <button class="next-btn" onclick="startQuiz()">Start Quiz</button>
+    </div>
+
+    <div class="container" id="quiz-page" style="display: none;">
+        <div id="question-container">
+            <h2 class="title">Work Situation</h2>
+            <p class="question">Mila has been asked to facilitate a meeting to identify new marketing opportunities. However, during the meeting none of the team members express opinions about which strategies to choose and how to implement them. This is uncharacteristic of the group, as they are usually very vocal and creative. Mila is concerned about implementing any new marketing strategies without getting useful feedback from the group. If you were Mila, which responses would be the most effective and least effective?</p>
+
+            <div class="options">
+                <h3 style="color: #4CAF50;">Choose One: <em>LEAST EFFECTIVE</em></h3>
+                <label><input type="radio" name="least-effective" value="1"> Finish the meeting and go ahead with your own ideas about how to implement the strategies.</label>
+                <label><input type="radio" name="least-effective" value="2"> Continue the meeting and try to convince the team to share their opinions as their input is needed to make the implementation successful.</label>
+                <label><input type="radio" name="least-effective" value="3"> Bring the meeting to a close and touch base with each team member separately about their recommendations.</label>
+                <label><input type="radio" name="least-effective" value="4"> Share your own opinions about marketing opportunities and see if the team has any concerns and if they support your ideas.</label>
+
+                <h3 style="color: #4CAF50;">Choose One: <em>MOST EFFECTIVE</em></h3>
+                <label><input type="radio" name="most-effective" value="1"> Finish the meeting and go ahead with your own ideas about how to implement the strategies.</label>
+                <label><input type="radio" name="most-effective" value="2"> Continue the meeting and try to convince the team to share their opinions as their input is needed to make the implementation successful.</label>
+                <label><input type="radio" name="most-effective" value="3"> Bring the meeting to a close and touch base with each team member separately about their recommendations.</label>
+                <label><input type="radio" name="most-effective" value="4"> Share your own opinions about marketing opportunities and see if the team has any concerns and if they support your ideas.</label>
+            </div>
+
+            <div class="buttons">
+                <button class="back-btn" onclick="previousQuestion()">Back</button>
+                <button class="next-btn" onclick="nextQuestion()">Next</button>
+            </div>
+        </div>
+
+        <div id="additional-questions">
+            <div class="question-block">
+                <h2 class="title">Work Situation 2</h2>
+                <p class="question">You are leading a team that has missed several project deadlines. The team is frustrated and morale is low. What would you do to boost their motivation and ensure timely completion of future projects?</p>
+                <div class="options">
+                    <h3 style="color: #4CAF50;">Choose One: <em>LEAST EFFECTIVE</em></h3>
+                    <label><input type="radio" name="least-effective-2" value="1"> Assign blame to team members who failed to meet their deadlines.</label>
+                    <label><input type="radio" name="least-effective-2" value="2"> Promise rewards for meeting deadlines without addressing the root cause of delays.</label>
+                    <label><input type="radio" name="least-effective-2" value="3"> Hold a meeting to discuss challenges and collectively create a plan for improvement.</label>
+                    <label><input type="radio" name="least-effective-2" value="4"> Provide additional training and resources to address skills gaps.</label>
+
+                    <h3 style="color: #4CAF50;">Choose One: <em>MOST EFFECTIVE</em></h3>
+                    <label><input type="radio" name="most-effective-2" value="1"> Assign blame to team members who failed to meet their deadlines.</label>
+                    <label><input type="radio" name="most-effective-2" value="2"> Promise rewards for meeting deadlines without addressing the root cause of delays.</label>
+                    <label><input type="radio" name="most-effective-2" value="3"> Hold a meeting to discuss challenges and collectively create a plan for improvement.</label>
+                    <label><input type="radio" name="most-effective-2" value="4"> Provide additional training and resources to address skills gaps.</label>
+                </div>
+                <div class="buttons">
+                    <button class="back-btn" onclick="previousQuestion()">Back</button>
+                    <button class="next-btn" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <h2 class="title">Work Situation 3</h2>
+                <p class="question">A colleague has been consistently arriving late to meetings, which is disrupting the workflow. How would you handle this situation?</p>
+                <div class="options">
+                    <h3 style="color: #4CAF50;">Choose One: <em>LEAST EFFECTIVE</em></h3>
+                    <label><input type="radio" name="least-effective-3" value="1"> Ignore the issue and hope it resolves itself over time.</label>
+                    <label><input type="radio" name="least-effective-3" value="2"> Publicly confront the colleague during the next meeting.</label>
+                    <label><input type="radio" name="least-effective-3" value="3"> Privately discuss the issue with the colleague and understand their reasons.</label>
+                    <label><input type="radio" name="least-effective-3" value="4"> Escalate the issue to your manager without addressing it directly with the colleague.</label>
+
+                    <h3 style="color: #4CAF50;">Choose One: <em>MOST EFFECTIVE</em></h3>
+                    <label><input type="radio" name="most-effective-3" value="1"> Ignore the issue and hope it resolves itself over time.</label>
+                    <label><input type="radio" name="most-effective-3" value="2"> Publicly confront the colleague during the next meeting.</label>
+                    <label><input type="radio" name="most-effective-3" value="3"> Privately discuss the issue with the colleague and understand their reasons.</label>
+                    <label><input type="radio" name="most-effective-3" value="4"> Escalate the issue to your manager without addressing it directly with the colleague.</label>
+                </div>
+                <div class="buttons">
+                    <button class="back-btn" onclick="previousQuestion()">Back</button>
+                    <button class="next-btn" onclick="nextQuestion()">Next</button>
+                </div>
+            </div>
+
+            <div class="question-block">
+                <h2 class="title">Work Situation 4</h2>
+                <p class="question">Your team has received conflicting instructions from two different managers. This is causing confusion and delays. What is your approach to resolve this?</p>
+                <div class="options">
+                    <h3 style="color: #4CAF50;">Choose One: <em>LEAST EFFECTIVE</em></h3>
+                    <label><input type="radio" name="least-effective-4" value="1"> Follow the instructions from the manager you personally prefer.</label>
+                    <label><input type="radio" name="least-effective-4" value="2"> Delay action until the managers resolve the conflict themselves.</label>
+                    <label><input type="radio" name="least-effective-4" value="3"> Clarify the conflicting instructions with both managers and align on priorities.</label>
+                    <label><input type="radio" name="least-effective-4" value="4"> Implement a hybrid solution without seeking further clarification.</label>
+
+                    <h3 style="color: #4CAF50;">Choose One: <em>MOST EFFECTIVE</em></h3>
+                    <label><input type="radio" name="most-effective-4" value="1"> Follow the instructions from the manager you personally prefer.</label>
+                    <label><input type="radio" name="most-effective-4" value="2"> Delay action until the managers resolve the conflict themselves.</label>
+                    <label><input type="radio" name="most-effective-4" value="3"> Clarify the conflicting instructions with both managers and align on priorities.</label>
+                    <label><input type="radio" name="most-effective-4" value="4"> Implement a hybrid solution without seeking further clarification.</label>
+                </div>
+                <div class="buttons">
+                    <button class="back-btn" onclick="previousQuestion()">Back</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="submit-container" style="display: none;">
+            <button class="submit-btn" onclick="confirmSubmission()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+        const totalQuestions = 4;
+
+        function startQuiz() {
+            const teamCode = document.getElementById('team-code').value;
+            if (teamCode.trim() === "") {
+                alert("Please enter a valid team code.");
+                return;
+            }
+            document.getElementById('team-code-page').style.display = 'none';
+            document.getElementById('quiz-page').style.display = 'block';
+            updateQuestionVisibility();
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions - 1) {
+                currentQuestion++;
+                updateQuestionVisibility();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                updateQuestionVisibility();
+            }
+        }
+
+        function updateQuestionVisibility() {
+            const allQuestions = [
+                document.getElementById('question-container'),
+                ...document.querySelectorAll('.question-block')
+            ];
+
+            allQuestions.forEach((block, index) => {
+                block.style.display = index === currentQuestion ? 'block' : 'none';
+            });
+
+            document.getElementById('submit-container').style.display = 
+                currentQuestion === totalQuestions - 1 ? 'block' : 'none';
+
+            document.querySelector('.back-btn').style.display = currentQuestion === 0 ? 'none' : 'inline-block';
+            document.querySelector('.next-btn').style.display = currentQuestion === totalQuestions - 1 ? 'none' : 'inline-block';
+        }
+
+        function confirmSubmission() {
+            const confirmation = confirm("Are you sure you want to submit? This cannot be modified.");
+            if (confirmation) {
+                alert("Your answers have been submitted.");
+                document.getElementById('quiz-page').innerHTML = '<h2 style="color: #4CAF50; text-align: center;">Thank you for participating!</h2>';
+            }
+        }
+
+        updateQuestionVisibility();
+        
+        function confirmSubmission() {
+    const confirmation = confirm("Are you sure you want to submit? This cannot be modified.");
+    if (confirmation) {
+        // Collect all selected answers
+        const answers = {
+            leastEffective1: document.querySelector('input[name="least-effective"]:checked')?.value || null,
+            mostEffective1: document.querySelector('input[name="most-effective"]:checked')?.value || null,
+            leastEffective2: document.querySelector('input[name="least-effective-2"]:checked')?.value || null,
+            mostEffective2: document.querySelector('input[name="most-effective-2"]:checked')?.value || null,
+            leastEffective3: document.querySelector('input[name="least-effective-3"]:checked')?.value || null,
+            mostEffective3: document.querySelector('input[name="most-effective-3"]:checked')?.value || null,
+            leastEffective4: document.querySelector('input[name="least-effective-4"]:checked')?.value || null,
+            mostEffective4: document.querySelector('input[name="most-effective-4"]:checked')?.value || null,
+        };
+
+        // Send data to the backend
+        fetch('https://your-backend-url/submit-quiz', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(answers),
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            document.getElementById('quiz-page').innerHTML = '<h2 style="color: #4CAF50; text-align: center;">Thank you for participating!</h2>';
+        })
+        .catch(error => {
+            console.error('Error submitting quiz:', error);
+            alert('There was an error submitting your answers. Please try again later.');
+        });
+    }
+}
+
+    </script>
+</body>
+</html>
