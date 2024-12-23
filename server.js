@@ -1,66 +1,25 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const xlsx = require('xlsx');
-const nodemailer = require('nodemailer');
-const fs = require('fs');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+// Middleware
 app.use(bodyParser.json());
+app.use(cors());
 
-let responses = [];
-
-// Endpoint to receive quiz responses
-app.post('/submit', (req, res) => {
-    const { teamCode, answers } = req.body;
-
-    // Save responses
-    responses.push({ teamCode, ...answers });
-
-    // Create an Excel file
-    const workbook = xlsx.utils.book_new();
-    const worksheet = xlsx.utils.json_to_sheet(responses);
-    xlsx.utils.book_append_sheet(workbook, worksheet, 'Responses');
-    const filePath = './quiz_responses.xlsx';
-    xlsx.writeFile(workbook, filePath);
-
-    // Send the file via email
-    sendEmail(filePath);
-
-    res.status(200).send({ message: 'Responses saved and sent to admin.' });
+// Endpoint to handle quiz submissions
+app.post('/submit-quiz', (req, res) => {
+    const answers = req.body;
+    console.log('Quiz Answers:', answers);
+    // Process the answers (e.g., save to a database)
+    res.status(200).json({ message: 'Submission received!' });
 });
 
-// Function to send email with Excel file
-function sendEmail(filePath) {
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'your-email@gmail.com', // Replace with your email
-            pass: 'your-email-password', // Replace with your email password
-        },
-    });
-
-    const mailOptions = {
-        from: 'your-email@gmail.com',
-        to: 'admin-email@example.com', // Replace with admin email
-        subject: 'Quiz Responses',
-        text: 'Attached are the quiz responses.',
-        attachments: [{ path: filePath }],
-    };
-
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.log('Error sending email:', error);
-        } else {
-            console.log('Email sent:', info.response);
-        }
-    });
-}
+// Serve frontend files
+app.use(express.static('public')); // Ensure your HTML is in the 'public' folder
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
